@@ -1,75 +1,135 @@
-# React + TypeScript + Vite
+# 📝 Blog Pessoal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web desenvolvida em **React + TypeScript**, criada como parte da formação em desenvolvimento Full Stack.
 
-Currently, two official plugins are available:
+O projeto consiste em uma interface para gerenciamento de um Blog Pessoal, com páginas e componentes reutilizáveis, formulários e navegação entre as funcionalidades da aplicação.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Tecnologias
 
-## React Compiler
+* **React**
+* **TypeScript**
+* **Vite**
+* **Tailwind CSS**
+* **ESLint**
+* **Git e GitHub**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🎯 Objetivo
 
-## Expanding the ESLint configuration
+Desenvolver uma aplicação Front-end moderna aplicando conceitos de:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Componentização
+* Reutilização de código
+* Tipagem com TypeScript
+* Navegação entre páginas
+* Formulários
+* Estilização responsiva
+* Organização de componentes
+* Boas práticas de desenvolvimento
+* Versionamento com Git
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📌 Funcionalidades
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+A aplicação foi estruturada para trabalhar com as principais funcionalidades de um Blog Pessoal, incluindo:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Cadastro e gerenciamento de temas
+* Cadastro e gerenciamento de postagens
+* Formulários para criação e atualização de dados
+* Navegação entre as áreas da aplicação
+* Componentes reutilizáveis
+* Interface responsiva
 
+## 🗂️ Estrutura do projeto
+
+```text
+blogpessoal/
+├── public/
+│
+├── src/
+│   ├── components/
+│   │   └── Componentes reutilizáveis da aplicação
+│   │
+│   └── Demais arquivos e módulos da aplicação
+│
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> A pasta `src` concentra a implementação da aplicação, enquanto `components` reúne elementos reutilizáveis da interface.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 💻 Como executar o projeto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone o repositório
 
+```bash
+git clone https://github.com/bellsbruno-ceccon/blogpessoal_react.git
 ```
+
+### 2. Acesse a pasta
+
+```bash
+cd blogpessoal_react
+```
+
+### 3. Instale as dependências
+
+```bash
+npm install
+```
+
+### 4. Execute o projeto
+
+```bash
+npm run dev
+```
+
+A aplicação será disponibilizada pelo servidor de desenvolvimento do Vite.
+
+## 🔐 Variáveis de ambiente
+
+O projeto utiliza arquivo `.env` para configurações locais.
+
+Por segurança, informações sensíveis **não são versionadas no GitHub**.
+
+O arquivo `.env` deve permanecer localmente na máquina de desenvolvimento.
+
+## 🧪 Qualidade do código
+
+O projeto utiliza **ESLint** para auxiliar na identificação de problemas e na manutenção da qualidade do código durante o desenvolvimento.
+
+## 📦 Build
+
+Para gerar a versão de produção:
+
+```bash
+npm run build
+```
+
+Para visualizar a aplicação gerada em ambiente local, utilize:
+
+```bash
+npm run preview
+```
+
+## 🌱 Versionamento
+
+O projeto utiliza **Git** para controle de versão e **GitHub** para hospedagem do código-fonte.
+
+Repositório:
+
+**github.com/bellsbruno-ceccon/blogpessoal_react**
+
+## 👩‍💻 Desenvolvimento
+
+Projeto desenvolvido por **Bella Bruno** como parte da formação em desenvolvimento de software.
+
+---
+
+⭐ Projeto em desenvolvimento contínuo, acompanhando a evolução dos conhecimentos em Front-end e Full Stack.
