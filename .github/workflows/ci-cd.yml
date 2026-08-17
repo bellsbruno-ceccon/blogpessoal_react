@@ -1,0 +1,81 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_test:
+    name: CI - Validação da Aplicação
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Iniciando a validação
+        run: echo "Iniciando a validação da aplicação"
+
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar Lint
+        run: npm run lint
+
+  run_build:
+    name: CI - Build da aplicação
+    runs-on: ubuntu-22.04
+    needs: run_test
+
+    steps:
+      - name: Iniciando o Build
+        run: echo "Iniciando a construção da aplicação"
+
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Build da aplicação
+        run: npm run build
+
+      - name: Login no Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build e Push da imagem Docker
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/blogpessoal:${{ github.run_number }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/blogpessoal:latest
+
+  run_deploy:
+    name: CD - Deploy no Render
+    runs-on: ubuntu-22.04
+    needs: run_build
+
+    steps:
+      - name: Deploy para produção
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
